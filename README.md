@@ -155,7 +155,7 @@ curl "http://localhost:8080/payments-summary?from=2025-01-01T00:00:00Z&to=2025-1
 ### Health Check
 
 ```bash
-curl http://localhost:8080/health
+curl http://localhost:8080/payments/service-health
 ```
 
 ## Logging

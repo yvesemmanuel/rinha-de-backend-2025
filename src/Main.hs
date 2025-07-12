@@ -3,17 +3,22 @@
 
 module Main where
 
-import Network.Wai
-import Network.Wai.Handler.Warp
+import Network.Wai (Application)
+import Network.Wai.Handler.Warp (run)
 import Servant
+  ( Proxy(..), serve, type (:<|>)((:<|>)), Server, Application )
 
-import API
-import Handlers
-import Logger
+import Routes.PaymentRoutes (API)
+import Handlers.PaymentHandlers
+  ( paymentsHandler, paymentsSummaryHandler, serviceHealthHandler )
+import Logger.Logger
+  ( Logger(logInfoWith, logDebugWith),
+    withComponent,
+    withOperation,
+    runConsoleLogger )
 
--- Server
 server :: Server API
-server = paymentsHandler :<|> paymentsSummaryHandler :<|> healthHandler
+server = paymentsHandler :<|> paymentsSummaryHandler :<|> serviceHealthHandler
 
 api :: Proxy API
 api = Proxy
@@ -29,7 +34,7 @@ main = do
   runConsoleLogger $ logInfoWith ctx "Available endpoints:"
   runConsoleLogger $ logInfoWith ctx "  POST /payments - Process a payment"
   runConsoleLogger $ logInfoWith ctx "  GET /payments-summary - Get payments summary"
-  runConsoleLogger $ logInfoWith ctx "  GET /health - Health check"
+  runConsoleLogger $ logInfoWith ctx "  GET /payments/service-health - Health check"
   
   runConsoleLogger $ logDebugWith ctx "Example usage:"
   runConsoleLogger $ logDebugWith ctx "  curl -X POST http://localhost:8080/payments \\"

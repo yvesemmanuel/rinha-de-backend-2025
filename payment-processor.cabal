@@ -10,12 +10,12 @@ build-type:     Simple
 
 library
   exposed-modules:
-      Types
-      Storage
-      PaymentService
-      API
-      Handlers
-      Logger
+      Models.Payment
+      Routes.PaymentRoutes
+      Handlers.PaymentHandlers
+      Storage.PaymentStorage
+      Services.PaymentService
+      Logger.Logger
   other-modules:
       Main
       Paths_payment_processor
@@ -41,12 +41,6 @@ library
 executable payment-processor
   main-is: Main.hs
   other-modules:
-      API
-      Handlers
-      Logger
-      PaymentService
-      Storage
-      Types
       Paths_payment_processor
   hs-source-dirs:
       src
