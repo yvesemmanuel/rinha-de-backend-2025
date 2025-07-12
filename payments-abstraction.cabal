@@ -27,6 +27,7 @@ library
     , bytestring
     , containers
     , hashable
+    , hlint
     , servant
     , servant-server
     , text
@@ -45,7 +46,6 @@ executable payments-abstractions
       PaymentService
       Storage
       Types
-      Paths_payments_abstraction
   hs-source-dirs:
       src
   build-depends:
@@ -54,6 +54,7 @@ executable payments-abstractions
     , bytestring
     , containers
     , hashable
+    , hlint
     , payments-abstraction
     , servant
     , servant-server
