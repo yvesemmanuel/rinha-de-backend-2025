@@ -14,6 +14,7 @@ dependencies:
 - bytestring
 - text
 - hashable
+- hlint
 
 library:
   source-dirs: src
@@ -23,6 +24,7 @@ library:
   - PaymentService
   - API
   - Handlers
+  - Logger
 
 executables:
   payments-abstractions:

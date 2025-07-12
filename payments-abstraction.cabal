@@ -15,6 +15,7 @@ library
       PaymentService
       API
       Handlers
+      Logger
   other-modules:
       Main
       Paths_payments_abstraction
@@ -40,6 +41,7 @@ executable payments-abstractions
   other-modules:
       API
       Handlers
+      Logger
       PaymentService
       Storage
       Types

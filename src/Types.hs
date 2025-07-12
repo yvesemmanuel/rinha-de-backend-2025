@@ -9,7 +9,6 @@ import Data.Time
 import Data.UUID (UUID)
 import GHC.Generics
 
-
 data PaymentRequest = PaymentRequest
   { correlationId :: UUID
   , amount :: Double

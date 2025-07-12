@@ -7,7 +7,6 @@ import Servant
 import Data.Time
 import Types
 
-
 type PaymentsAPI = "payments" :> ReqBody '[JSON] PaymentRequest :> Post '[JSON] ()
 
 type PaymentsSummaryAPI = "payments-summary" 

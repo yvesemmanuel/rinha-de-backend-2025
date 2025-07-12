@@ -12,7 +12,7 @@ install-haskell:
 	@sudo apt install haskell-stack
 
 build-dev:
-	@stack init
+	@stack init --force
 	@stack install
 
 build:
