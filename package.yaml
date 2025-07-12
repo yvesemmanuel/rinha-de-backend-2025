@@ -1,4 +1,4 @@
-name: payments-abstraction
+name: payment-processor
 version: 0.1.0.0
 
 dependencies:
@@ -15,6 +15,7 @@ dependencies:
 - text
 - hashable
 - hlint
+- apply-refact
 
 library:
   source-dirs: src
@@ -27,8 +28,8 @@ library:
   - Logger
 
 executables:
-  payments-abstractions:
+  payment-processor:
     main: Main.hs
     source-dirs: src
     dependencies:
-    - payments-abstraction
+    - payment-processor

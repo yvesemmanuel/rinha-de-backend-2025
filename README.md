@@ -1,4 +1,4 @@
-# Payments Abstraction
+# Payment Processor
 
 A Haskell-based payment processing API built with Servant for the Rinha de Backend 2025 challenge. This service acts as an intermediary between payment requests and external payment processors, implementing a fallback strategy for high availability.
 
@@ -65,7 +65,7 @@ The application is organized into the following modules:
 
 ### Business Logic
 
-- **`PaymentService.hs`** - Payment processing abstraction and mock implementation
+- **`PaymentService.hs`** - Payment processing and mock implementation
 - **`Storage.hs`** - Storage abstraction with in-memory implementation
 
 ### Infrastructure
@@ -100,7 +100,7 @@ The application is organized into the following modules:
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd payments-abstraction
+   cd payment-processor
    ```
 
 2. **Build the project:**

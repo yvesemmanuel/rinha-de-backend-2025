@@ -11,11 +11,9 @@ import qualified Data.UUID.V4 as UUID
 import Data.Hashable (hash)
 import qualified Data.Text as T
 
--- Payment Processing Service abstraction
 class PaymentProcessorService m where
   processPayment :: PaymentRequest -> m (Either String ProcessorType)
 
--- Mock implementation that simulates payment processing
 newtype MockPaymentProcessor a = MockPaymentProcessor (IO a)
   deriving (Functor, Applicative, Monad)
 
@@ -28,8 +26,6 @@ instance PaymentProcessorService MockPaymentProcessor where
     
     runConsoleLogger $ logInfoWith ctx "Starting payment processing"
     
-    -- Simple mock logic: try default first, fallback on failure
-    -- For demo purposes, we'll succeed with default 80% of the time
     uuid <- UUID.nextRandom
     let uuidString = UUID.toString uuid
         hashValue = abs $ hash uuidString
@@ -49,6 +45,5 @@ instance PaymentProcessorService MockPaymentProcessor where
         runConsoleLogger $ logWarnWith ctx "Default processor unavailable, using fallback"
         return $ Right FallbackProcessor
 
--- Helper function to run MockPaymentProcessor
 runMockPaymentProcessor :: MockPaymentProcessor a -> IO a
 runMockPaymentProcessor (MockPaymentProcessor action) = action

@@ -10,12 +10,10 @@ import Data.IORef
 import System.IO.Unsafe (unsafePerformIO)
 import qualified Data.Text as T
 
--- Storage abstraction
 class PaymentStorage m where
   storePayment :: PaymentRecord -> m ()
   getPaymentsSummary :: Maybe UTCTime -> Maybe UTCTime -> m PaymentsSummary
 
--- In-memory storage implementation
 type PaymentStore = IORef [PaymentRecord]
 
 newtype InMemoryStorage a = InMemoryStorage (IO a)
@@ -62,7 +60,6 @@ globalPaymentStore = unsafePerformIO (newIORef [])
 getPaymentStore :: IO (IORef [PaymentRecord])
 getPaymentStore = return globalPaymentStore
 
--- Utility functions
 filterByDateRange :: Maybe UTCTime -> Maybe UTCTime -> [PaymentRecord] -> [PaymentRecord]
 filterByDateRange maybeFrom maybeTo payments = 
   let fromFilter = case maybeFrom of
@@ -89,6 +86,5 @@ calculateSummary payments =
         }
   in PaymentsSummary defaultSummary fallbackSummary
 
--- Helper function to run InMemoryStorage
 runInMemoryStorage :: InMemoryStorage a -> IO a
 runInMemoryStorage (InMemoryStorage action) = action

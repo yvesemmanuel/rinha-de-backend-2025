@@ -15,12 +15,15 @@ build-dev:
 	@stack init --force
 	@stack install
 
+test:
+	@stack test
+
+check:
+	hlint .
+
 build:
 	@stack init
 	@stack build --copy-bins
 
 run:
 	@stack run
-
-test:
-	@stack test
