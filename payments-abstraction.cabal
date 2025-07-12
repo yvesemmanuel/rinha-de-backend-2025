@@ -1,0 +1,63 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           payments-abstraction
+version:        0.1.0.0
+build-type:     Simple
+
+library
+  exposed-modules:
+      Types
+      Storage
+      PaymentService
+      API
+      Handlers
+  other-modules:
+      Main
+      Paths_payments_abstraction
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , hashable
+    , servant
+    , servant-server
+    , text
+    , time
+    , uuid
+    , wai
+    , warp
+  default-language: Haskell2010
+
+executable payments-abstractions
+  main-is: Main.hs
+  other-modules:
+      API
+      Handlers
+      PaymentService
+      Storage
+      Types
+      Paths_payments_abstraction
+  hs-source-dirs:
+      src
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , hashable
+    , payments-abstraction
+    , servant
+    , servant-server
+    , text
+    , time
+    , uuid
+    , wai
+    , warp
+  default-language: Haskell2010

@@ -1,0 +1,32 @@
+name: payments-abstraction
+version: 0.1.0.0
+
+dependencies:
+- base >= 4.7 && < 5
+- servant
+- servant-server
+- wai
+- warp
+- aeson
+- time
+- uuid
+- containers
+- bytestring
+- text
+- hashable
+
+library:
+  source-dirs: src
+  exposed-modules:
+  - Types
+  - Storage
+  - PaymentService
+  - API
+  - Handlers
+
+executables:
+  payments-abstractions:
+    main: Main.hs
+    source-dirs: src
+    dependencies:
+    - payments-abstraction
